@@ -6,7 +6,7 @@ package exercise;
  * 该类的calculate方法与其他不同增加了检测算式是否为整数除法算式不带小数
  */
 public class DivisionOperation extends BinaryOperation {
-    DivisionOperation() {
+    public DivisionOperation() {
         generateBinaryOperation('/');
     }
 
