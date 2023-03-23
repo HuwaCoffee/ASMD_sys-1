@@ -39,7 +39,7 @@ public class GetQuestionAction implements Action {
     public String execute01() {
         //从数据库中随机抽10道题，存入questions
         DataBaseGet db=new DataBaseGet();
-        wrongQuestions=db.GetWrongQuestions();
+        wrongQuestions=db.GetWrongQuestions(studentId);
         ActionContext ac=ActionContext.getContext();
         //把習題保存到application中
         ac.getApplication().put("wrongQuestions",getWrongQuestions());
