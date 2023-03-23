@@ -160,7 +160,7 @@ public class DataBaseGet {
 
 
     //获取错题，最多10道题，返回题目类型数组。
-    public ArrayList<BinaryOperation> GetWrongQuestions(){
+    public ArrayList<BinaryOperation> GetWrongQuestions(int studentId){
         ArrayList<BinaryOperation> wrongQuestions=new ArrayList<>();
         //读取数据库，获取错题集的前10道题，（如果不够10道就取完），并存入wrongQuestions
 
