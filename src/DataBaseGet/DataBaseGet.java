@@ -4,6 +4,8 @@ import exercise.BinaryOperation;
 import exercise.MysqlTool;
 import user.School;
 import user.Student;
+import user.StudyClass;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -35,8 +37,8 @@ public class DataBaseGet {
 
 
     //从school表中获取学校数组
-    public ArrayList<Class> GetClasses(){
-        ArrayList<Class> Classes=new ArrayList<>();
+    public ArrayList<StudyClass> GetClasses(){
+        ArrayList<StudyClass> Classes=new ArrayList<>();
 
             /*待完成
                 待完成
