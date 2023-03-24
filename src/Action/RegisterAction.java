@@ -68,6 +68,7 @@ public class RegisterAction implements Action {
         this.classId = classId;
     }
 
+    //【注册功能】
     @Override
     public String execute() throws Exception {
         //username如果重复的话，返回ERROR，重新填写信息
@@ -86,7 +87,7 @@ public class RegisterAction implements Action {
             }
         }
         if(!schoolFind){
-            return NONE;//返回NONE，代表未找到用户输入的学校
+            return INPUT;//返回INPUT，代表未找到用户输入的学校
         }
         for (int i = 0; i < classes.size(); i++) {
             if(classes.get(i).getClassName().equals(className)){
@@ -95,7 +96,7 @@ public class RegisterAction implements Action {
             }
         }
         if(!classFind){
-            return LOGIN;//返回LOGIN，代表未找到用户输入的班级
+            return NONE;//返回NONE，代表未找到用户输入的班级
         }
 
         //判断用户名是否重复
@@ -106,7 +107,7 @@ public class RegisterAction implements Action {
         }
 
 
-        /*在这里将类中的各个属性填入数据库，想想学生id该怎么存？怎样可以设置递增
+        /*在这里将类中的各个属性，利用Student类的构造函数，调用DataBaseSet中的方法存入数据库
          *
          *
 
