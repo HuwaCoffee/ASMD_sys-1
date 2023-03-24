@@ -21,8 +21,12 @@ public class loginAction implements Action {
     public String getPassword() {
         return password;
     }
-
-
+    public void setUsername(String username) {
+        this.username = username;
+    }
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
     @Override
     public String execute() throws Exception {
@@ -42,5 +46,16 @@ public class loginAction implements Action {
             }
         }
         return NONE;//账号密码都错误
+    }
+
+    public static void main(String[] args) {
+        DataBaseGet db=new DataBaseGet();
+        try {
+            ArrayList<Student> students =db.GetUser();
+            System.out.println(students.size());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
     }
 }
