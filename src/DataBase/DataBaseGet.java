@@ -14,6 +14,7 @@ import java.util.Random;
 
 
 public class DataBaseGet {
+    //数据库相关属性
     private MysqlTool mysql=new MysqlTool();
     private Connection con;
     private PreparedStatement ps;
@@ -160,6 +161,29 @@ public class DataBaseGet {
 
 
     //获取错题，最多10道题，返回题目类型数组。
+    public ArrayList<BinaryOperation> GetWrongQuestions_10(int studentId){
+        ArrayList<BinaryOperation> wrongQuestions=new ArrayList<>();
+        //读取数据库，获取错题集的前10道题，（如果不够10道就取完），并存入wrongQuestions
+
+
+        /*待完成
+                待完成
+                待完成
+                待完成
+                待完成
+                待完成
+                待完成
+                待完成
+                待完成*/
+
+
+
+
+        return wrongQuestions;
+    }
+
+
+    //获取某id用户所有错题，返回题目类型数组，用于查看历史错题
     public ArrayList<BinaryOperation> GetWrongQuestions(int studentId){
         ArrayList<BinaryOperation> wrongQuestions=new ArrayList<>();
         //读取数据库，获取错题集的前10道题，（如果不够10道就取完），并存入wrongQuestions
@@ -190,14 +214,8 @@ public class DataBaseGet {
         ps=con.prepareStatement(sql);
         ResultSet rs=ps.executeQuery();
         while(rs.next()){
-          Student user=new Student();
-            user.setUserID(rs.getInt("studentid"));
-            user.setUserName(rs.getString("username"));
-            user.setPassWord(rs.getString("password"));
-            user.setStudentName(rs.getString("studentname"));
-            user.setPhoneNumber(rs.getString("tel"));
-            user.setAuthority(rs.getString("permissions"));
-            StudentMassage.add(user);
+          Student user=new Student(rs.getInt("studentid"),rs.getString("username"),rs.getString("password"),rs.getString("tel"),rs.getString("studentname"),rs.getInt("schoolid"),rs.getInt("classid"));
+          StudentMassage.add(user);
         }
 
         rs.close();
@@ -207,11 +225,12 @@ public class DataBaseGet {
         return StudentMassage;
     }
 
-    public static void main(String[] args) {
+     //测试代码
+    /*public static void main(String[] args) {
 
         DataBaseGet a=new DataBaseGet();
 //        a.GetSchools();
-        /*a.GetClasses();
+        *//*a.GetClasses();
 
         try {
             ArrayList<StudyClass> cla=a.GetClasses();
@@ -222,7 +241,7 @@ public class DataBaseGet {
             }
         } catch (Exception e) {
             throw new RuntimeException(e);
-        }*/
+        }*//*
         try {
             ArrayList<Student> stu=a.GetUser();
             System.out.print("学生人数：");
@@ -237,6 +256,6 @@ public class DataBaseGet {
         }
 
 
-    }
+    }*/
 }
 
