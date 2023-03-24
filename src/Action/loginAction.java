@@ -28,6 +28,7 @@ public class loginAction implements Action {
         this.password = password;
     }
 
+    //【登录功能】
     @Override
     public String execute() throws Exception {
         int login=1;//默认登录成功
@@ -36,18 +37,19 @@ public class loginAction implements Action {
         ArrayList<Student> students =db.GetUser();
         for (int i = 0; i < students.size(); i++) {
             if(students.get(i).getUserName().equals(username)&&students.get(i).getPassWord().equals(password)){
-                return SUCCESS;//返回SUCCESS，通过struts.xml进入登录成功页面（即进入学生主页面）
+                return "SUCCESS";//返回SUCCESS，通过struts.xml进入登录成功页面（即进入学生主页面）
             }
             if(students.get(i).getUserName().equals(username)&&!students.get(i).getPassWord().equals(password)){
-                return "PasswordWrong";//登录失败，密码错误
+                return ERROR;//登录失败，密码错误
             }
             if(!students.get(i).getUserName().equals(username)&&students.get(i).getPassWord().equals(password)){
-                return "UserNameWrong";//登录失败，账号错误
+                return INPUT;//登录失败，账号错误
             }
         }
         return NONE;//账号密码都错误
     }
 
+    //测试代码
     public static void main(String[] args) {
         DataBaseGet db=new DataBaseGet();
         try {
