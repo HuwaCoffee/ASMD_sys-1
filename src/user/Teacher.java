@@ -3,23 +3,15 @@ package user;
 import java.util.ArrayList;
 
 public class Teacher extends User {
-    private String teachingClass;  //班级
-    private String teacherSchool;  //学校
+    private String schoolId;  //班级
+    private String classId;  //学校
+    //老师数据库中缺少用户名和密码！！！！！！！！！！！！！！！！！！！！
 
-    public String getTeachingClass() {
-        return teachingClass;
-    }
 
-    public void setTeachingClass(String teachingClass) {
-        this.teachingClass = teachingClass;
-    }
-
-    public String getTeacherSchool() {
-        return teacherSchool;
-    }
-
-    public void setTeacherSchool(String teacherSchool) {
-        this.teacherSchool = teacherSchool;
+    public Teacher(int userID, String userName, String passWord, String phoneNumber, String schoolId, String classId) {
+        super(userID, userName, passWord, phoneNumber, "b");
+        this.schoolId = schoolId;
+        this.classId = classId;
     }
 
     //管理班级，进入该界面之后有三个选项，包括删除学生，修改学生信息，查询学生信息，教师需要再次选择
