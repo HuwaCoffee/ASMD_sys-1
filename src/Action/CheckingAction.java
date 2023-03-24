@@ -30,6 +30,7 @@ public class CheckingAction implements Action{
         this.answ = answ;
     }
 
+    //【批改试卷】
     @Override
     public String execute() throws Exception {
 
