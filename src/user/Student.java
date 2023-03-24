@@ -7,6 +7,8 @@ public class Student extends User {
     private int schoolId;                  //学校id
     private int classId;                   //班级id
 
+
+
     public String getStudentName() {
         return studentName;
     }
@@ -23,6 +25,16 @@ public class Student extends User {
         return classId;
     }
     public void setClassId(int classId) {
+        this.classId = classId;
+    }
+
+    public Student(){
+        super();
+    }
+    public Student(int userID, String userName, String passWord, String phoneNumber, String studentName, int schoolId, int classId) {
+        super(userID, userName, passWord, phoneNumber, "c");
+        this.studentName = studentName;
+        this.schoolId = schoolId;
         this.classId = classId;
     }
 
