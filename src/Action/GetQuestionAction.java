@@ -20,6 +20,18 @@ public class GetQuestionAction implements Action {
     public ArrayList<BinaryOperation> getQuestions() {
         return questions;
     }
+    public void setQuestions(ArrayList<BinaryOperation> questions) {
+        this.questions = questions;
+    }
+    public void setWrongQuestions(ArrayList<BinaryOperation> wrongQuestions) {
+        this.wrongQuestions = wrongQuestions;
+    }
+    public int getStudentId() {
+        return studentId;
+    }
+    public void setStudentId(int studentId) {
+        this.studentId = studentId;
+    }
 
     //获取普通练习的题目，默认10道题。可以修改方法让用户输入题目数
     @Override
