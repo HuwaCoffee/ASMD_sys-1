@@ -4,6 +4,7 @@ import exercise.*;
 import user.School;
 import user.Student;
 import user.StudyClass;
+import user.Teacher;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -14,7 +15,6 @@ import java.util.Random;
 
 
 public class DataBaseGet {
-    //数据库相关属性
     private MysqlTool mysql=new MysqlTool();
     private Connection con;
     private PreparedStatement ps;
@@ -161,29 +161,6 @@ public class DataBaseGet {
 
 
     //获取错题，最多10道题，返回题目类型数组。
-    public ArrayList<BinaryOperation> GetWrongQuestions_10(int studentId){
-        ArrayList<BinaryOperation> wrongQuestions=new ArrayList<>();
-        //读取数据库，获取错题集的前10道题，（如果不够10道就取完），并存入wrongQuestions
-
-
-        /*待完成
-                待完成
-                待完成
-                待完成
-                待完成
-                待完成
-                待完成
-                待完成
-                待完成*/
-
-
-
-
-        return wrongQuestions;
-    }
-
-
-    //获取某id用户所有错题，返回题目类型数组，用于查看历史错题
     public ArrayList<BinaryOperation> GetWrongQuestions(int studentId){
         ArrayList<BinaryOperation> wrongQuestions=new ArrayList<>();
         //读取数据库，获取错题集的前10道题，（如果不够10道就取完），并存入wrongQuestions
@@ -206,7 +183,7 @@ public class DataBaseGet {
     }
 
     //返回所有学生信息数组
-    public ArrayList<Student> GetUser()throws Exception{
+    public ArrayList<Student> GetStudents()throws Exception{
         ArrayList<Student> StudentMassage=new ArrayList<>();
         //读取数据库的所有学生信息，并存入StudentMassage
         con= mysql.openDB();
@@ -214,8 +191,14 @@ public class DataBaseGet {
         ps=con.prepareStatement(sql);
         ResultSet rs=ps.executeQuery();
         while(rs.next()){
-          Student user=new Student(rs.getInt("studentid"),rs.getString("username"),rs.getString("password"),rs.getString("tel"),rs.getString("studentname"),rs.getInt("schoolid"),rs.getInt("classid"));
-          StudentMassage.add(user);
+          Student user=new Student();
+            user.setUserID(rs.getInt("studentid"));
+            user.setUserName(rs.getString("username"));
+            user.setPassWord(rs.getString("password"));
+            user.setStudentName(rs.getString("studentname"));
+            user.setPhoneNumber(rs.getString("tel"));
+            user.setAuthority(rs.getString("permissions"));
+            StudentMassage.add(user);
         }
 
         rs.close();
@@ -224,13 +207,37 @@ public class DataBaseGet {
 
         return StudentMassage;
     }
+    //返回所有老师信息数组
+    public ArrayList<Teacher> GetTeachers()throws Exception{
+        ArrayList<Teacher> TeacherMassage=new ArrayList<>();
+        //读取数据库的所有学生信息，并存入StudentMassage
+        con= mysql.openDB();
+        String sql = "select * from student ";
+        ps=con.prepareStatement(sql);
+        ResultSet rs=ps.executeQuery();
+        while(rs.next()){
+          Teacher user=new Teacher();
+            user.setUserID(rs.getInt("studentid"));
+            user.setUserName(rs.getString("username"));
+            user.setPassWord(rs.getString("password"));
+            user.setTeacherName(rs.getString("studentname"));
+            user.setPhoneNumber(rs.getString("tel"));
+            user.setAuthority(rs.getString("permissions"));
+            TeacherMassage.add(user);
+        }
 
-     //测试代码
-    /*public static void main(String[] args) {
+        rs.close();
+        ps.close();
+        con.close();
+
+        return TeacherMassage;
+    }
+
+    public static void main(String[] args) {
 
         DataBaseGet a=new DataBaseGet();
 //        a.GetSchools();
-        *//*a.GetClasses();
+        /*a.GetClasses();
 
         try {
             ArrayList<StudyClass> cla=a.GetClasses();
@@ -241,9 +248,9 @@ public class DataBaseGet {
             }
         } catch (Exception e) {
             throw new RuntimeException(e);
-        }*//*
+        }*/
         try {
-            ArrayList<Student> stu=a.GetUser();
+            ArrayList<Student> stu=a.GetStudents();
             System.out.print("学生人数：");
             System.out.println(stu.size());
             for (int i = 0; i < stu.size(); i++) {
@@ -256,6 +263,6 @@ public class DataBaseGet {
         }
 
 
-    }*/
+    }
 }
 
