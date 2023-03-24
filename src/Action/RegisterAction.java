@@ -20,7 +20,7 @@ public class RegisterAction implements Action {
     //有默认值，或由数据库中得到
     private int schoolId;     //学校Id
     private int classId;      //班级Id
-    private String permissions="a";  //权限
+    private String permissions="c";  //权限
 
     public String getUsername() {
         return username;
