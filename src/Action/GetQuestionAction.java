@@ -1,6 +1,6 @@
 package Action;
 
-import DataBaseGet.DataBaseGet;
+import DataBase.DataBaseGet;
 import com.opensymphony.xwork2.ActionContext;
 import exercise.BinaryOperation;
 import java.util.ArrayList;
