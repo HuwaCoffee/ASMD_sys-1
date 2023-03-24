@@ -33,7 +33,7 @@ public class GetQuestionAction implements Action {
         this.studentId = studentId;
     }
 
-    //获取普通练习的题目，默认10道题。可以修改方法让用户输入题目数
+    //【正常练习】获取普通练习的题目，默认10道题。《后续可增加方法让用户输入题目数》
     @Override
     public String execute() {
         //从数据库中随机抽10道题，存入questions
@@ -47,11 +47,23 @@ public class GetQuestionAction implements Action {
         return SUCCESS;
     }
 
-    //获取某个用户的错题，数量<=10，错题如果超过十道，则只返回前十道题
+    //【复习练习】获取某个用户的错题，数量<=10，错题如果超过十道，则只返回前十道题
     public String execute01() {
         //从数据库中随机抽10道题，存入questions
         DataBaseGet db=new DataBaseGet();
-        wrongQuestions=db.GetWrongQuestions(studentId);
+        wrongQuestions=db.GetWrongQuestions_10(studentId);
+        ActionContext ac=ActionContext.getContext();
+        //把習題保存到application中
+        ac.getApplication().put("wrongQuestions",getWrongQuestions());
+        //返回SUCCESS，题目返回成功
+        return SUCCESS;
+    }
+
+    //【查看历史错题】获取某个用户的所有错题
+    public String execute02() {
+        //从数据库中随机抽10道题，存入questions
+        DataBaseGet db=new DataBaseGet();
+        wrongQuestions=db.GetWrongQuestions_10(studentId);
         ActionContext ac=ActionContext.getContext();
         //把習題保存到application中
         ac.getApplication().put("wrongQuestions",getWrongQuestions());
