@@ -39,10 +39,10 @@ public class loginAction implements Action {
                 return SUCCESS;//返回SUCCESS，通过struts.xml进入登录成功页面（即进入学生主页面）
             }
             if(students.get(i).getUserName().equals(username)&&!students.get(i).getPassWord().equals(password)){
-                return INPUT;//登录失败，密码错误
+                return "PasswordWrong";//登录失败，密码错误
             }
             if(!students.get(i).getUserName().equals(username)&&students.get(i).getPassWord().equals(password)){
-                return ERROR;//登录失败，账号错误
+                return "UserNameWrong";//登录失败，账号错误
             }
         }
         return NONE;//账号密码都错误
