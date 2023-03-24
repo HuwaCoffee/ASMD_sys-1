@@ -73,7 +73,7 @@ public class RegisterAction implements Action {
     public String execute() throws Exception {
         //username如果重复的话，返回ERROR，重新填写信息
         DataBaseGet db=new DataBaseGet();
-        ArrayList<Student> students =db.GetUser();
+        ArrayList<Student> students =db.GetStudents();
         ArrayList<StudyClass> classes=db.GetClasses();
         ArrayList<School> schools=db.GetSchools();
         Boolean schoolFind=false;   //作为标志变量看是否找到用户输入的school
