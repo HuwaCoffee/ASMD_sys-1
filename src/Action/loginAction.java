@@ -40,7 +40,7 @@ public class loginAction implements Action {
         this.password = password;
     }*/
 
-    【用户登录】
+    //【用户登录】
     @Override
     public String execute() throws Exception {
         //将属性与Student数据库中的账号密码比对
