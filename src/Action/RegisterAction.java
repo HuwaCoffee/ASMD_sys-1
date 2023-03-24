@@ -43,6 +43,30 @@ public class RegisterAction implements Action {
     public String getClassName() {
         return className;
     }
+    public void setUsername(String username) {
+        this.username = username;
+    }
+    public void setPassword(String password) {
+        this.password = password;
+    }
+    public void setStudentname(String studentname) {
+        this.studentname = studentname;
+    }
+    public void setTel(String tel) {
+        this.tel = tel;
+    }
+    public void setSchoolName(String schoolName) {
+        this.schoolName = schoolName;
+    }
+    public void setClassName(String className) {
+        this.className = className;
+    }
+    public void setSchoolId(int schoolId) {
+        this.schoolId = schoolId;
+    }
+    public void setClassId(int classId) {
+        this.classId = classId;
+    }
 
     @Override
     public String execute() throws Exception {
