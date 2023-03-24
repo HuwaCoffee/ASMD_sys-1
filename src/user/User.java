@@ -13,6 +13,16 @@ public abstract class User {
     private String phoneNumber; //电话
     private String authority;   //权值
 
+    public User(int userID, String userName, String passWord, String phoneNumber, String authority) {
+        this.userID = userID;
+        this.userName = userName;
+        this.passWord = passWord;
+        this.phoneNumber = phoneNumber;
+        this.authority = authority;
+    }
+
+    public User(){}
+
     public int getUserID() {
         return userID;
     }
